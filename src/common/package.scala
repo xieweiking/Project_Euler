@@ -140,10 +140,19 @@ package object common {
     final def isEven(x: Int) = (x & 1) == 0
 
     @inline
+    final def isOdd(x: Int) = !isEven(x)
+
+    @inline
     final def isEven(x: Long) = (x & 1L) == 0
 
     @inline
+    final def isOdd(x: Long) = !isEven(x)
+
+    @inline
     final def isEven(x: BigInt) = (x & BigInt(1)) == 0
+
+    @inline
+    final def isOdd(x: BigInt) = !isEven(x)
 
     @inline
     final def isInteger(x: Double) = x.asInstanceOf[Int].asInstanceOf[Double] == x
@@ -174,7 +183,7 @@ package object common {
 
     @inline
     final def combineAll(total: Int)(max: Int) = combineAny(total)(1, max)
-    
+
     @inline
     final def powMod(a: Long, b: Long, m: Long) = {
         var r = 1L
@@ -186,7 +195,7 @@ package object common {
         }
         r
     }
-    
+
     @inline
     final def abMod(a: Long, b: Long, m: Long) = {
         var (rA, rB) = (a % m, b % m)
@@ -197,6 +206,16 @@ package object common {
             rB = rB >> 1
         }
         r
+    }
+
+    @inline
+    final def nthOdd(n: Int) = if (n <= 0) 1 else {
+        2 * n + 1
+    }
+
+    @inline
+    final def nthEven(n: Int) = if (n <= 0) 0 else {
+        2 * n
     }
 
     @inline
