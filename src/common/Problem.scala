@@ -7,7 +7,7 @@ trait Problem extends App {
     println("===================================================================================================")
     println(" " + this.getClass.getPackage.getName.replace('_', ' ').toUpperCase + ":\n")
     println(question.stripMargin)
-    println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -")
+    println("---------------------------------------------------------------------------------------------------")
     val prefix = this.getClass().getPackage().getName() + ".Answer"
     var more = true
     var i = 0
