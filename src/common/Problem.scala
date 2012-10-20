@@ -15,7 +15,7 @@ trait Problem extends App {
         i += 1
         try {
             val answer = Class.forName(prefix + i)
-            val arg = Array[String]()
+            val arg = Array.empty[String]
             println
             answer.getMethod("main", arg.getClass).invoke(answer, arg)
             println
