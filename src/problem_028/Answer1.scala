@@ -9,7 +9,7 @@ object Answer1 extends Answer {
     def answer = {
         val spiral = Spiral(1001)
         (0 /: spiral.diagonalPositions) { (sum, pos) =>
-            sum + spiral(pos._1, pos._2)
+            sum + spiral.numberAt(pos)
         }
     }
 

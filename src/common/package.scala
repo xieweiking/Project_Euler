@@ -160,6 +160,17 @@ package object common {
     @inline
     final def isLong(x: Double) = x.asInstanceOf[Long].asInstanceOf[Double] == x
 
+    @inline
+    final def isSquare(n: Int) = {
+        var i = 1
+        var next = n
+        while (next > 0) {
+            next -= i
+            i += 2
+        }
+        0 == next
+    }
+
     final def factorial(x: Int): BigInt =
         if (x <= 1) 1
         else x * factorial(x - 1)
