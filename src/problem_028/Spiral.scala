@@ -87,6 +87,8 @@ class Spiral(scale: Int) {
         }
     }
 
+    def apply(x: Int, y: Int) = this.numberAt(x, y);
+
     def apply(n: Int) = this.positionOf(n)
 
 }
