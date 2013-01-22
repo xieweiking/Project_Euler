@@ -13,7 +13,7 @@ object Answer2 extends Answer {
         val abundants = new mutable.ArrayBuffer[Int]()
         val sumOf2Abundants = new Array[Boolean](max)
         val range = 1 until max
-        for (n  <- range if isAbundant(n))
+        for (n <- range if isAbundant(n))
             abundants += n
         val size = abundants.size
         for {
