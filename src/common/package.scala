@@ -244,13 +244,20 @@ package object common {
 
     final val CONCURRENT_COUNT = 2 * Runtime.getRuntime.availableProcessors
 
-    final def using[R, T <: { def close(): Any }](closable: T)(block: T => R): R = {
+    final def using[T <: { def close(): Any }, R](closable: T)(block: T => R): R = {
         try {
             block(closable)
         }
         finally {
-            closable.close()
+            if (closable != null) {
+                try {
+                    closable.close()
+                }
+                catch {
+                    case err: Throwable => err.printStackTrace()
+                }
+            }
         }
-    } 
+    }
     
 }
