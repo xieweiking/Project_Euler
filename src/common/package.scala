@@ -2,6 +2,7 @@ import scala.util.continuations.{ reset, shift, cpsParam }
 import scala.annotation.tailrec
 import scala.collection.mutable
 import java.util.Arrays
+import scala.language.reflectiveCalls
 
 package object common {
 
@@ -243,4 +244,13 @@ package object common {
 
     final val CONCURRENT_COUNT = 2 * Runtime.getRuntime.availableProcessors
 
+    final def using[R, T <: { def close(): Any }](closable: T)(block: T => R): R = {
+        try {
+            block(closable)
+        }
+        finally {
+            closable.close()
+        }
+    } 
+    
 }

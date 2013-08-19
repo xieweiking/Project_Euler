@@ -1,12 +1,13 @@
 package problem_067
 
+import common._
 import scala.io.Source
 
 object Datas {
 
-    private val source = Source.fromURL(this.getClass.getResource("triangle.txt"))
-    val stackStr = source.mkString.trim
-    source.close
+    val stackStr = using(Source.fromURL(this.getClass.getResource("triangle.txt"))) { source =>
+        source.mkString.trim
+    }
 
     def getStack = for (line <- this.stackStr.stripMargin.split("\n|\r\n|\r"))
         yield for (str <- line.split("\\s+"))
